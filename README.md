@@ -13,6 +13,6 @@ npm install
 nmp run start
 
 #To deploy
-connect your account to heroku or... choose repo and depoy
+connect your account to heroku or... choose repo and deploy
 
 To deploy static file alone : (react standalone)  https://github.com/fabulouslevi/NoteApp.git
