@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@fontsource/poppins": "^4.5.8",
+    "@fontsource/roboto": "^4.5.7"
+  }
+}

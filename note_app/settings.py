@@ -1,4 +1,7 @@
 from pathlib import Path
+from django.conf import settings
+#import django_heroku
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -13,7 +16,7 @@ SECRET_KEY = 'django-insecure-y&rprn2bp+!y#tsole6t8zbda=f3+zm2r5v@t^@+zztd-2^7-#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['http://127.0.0.1:3000' , 'https://emmanuelosayame.herokuapp.com/']
+ALLOWED_HOSTS = [ 'localhost', 'http://127.0.0.1' , 'https://emmanuelosayame.herokuapp.com']
 
 
 # Application definition
@@ -28,9 +31,15 @@ INSTALLED_APPS = [
 
     'api.apps.ApiConfig',
     'rest_framework',
-    'corsheaders',
-    
+    'corsheaders',    
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -44,6 +53,8 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' 
 
 ROOT_URLCONF = 'note_app.urls'
 
@@ -113,7 +124,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#django_heroku.settings(locals())
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
@@ -126,6 +143,4 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:8000', 'https://emmanuelosayame.herokuapp.com/'
-]
+CORS_ORIGIN_ALLOW_ALL = True
