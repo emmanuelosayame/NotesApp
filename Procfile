@@ -1,1 +1,1 @@
-web: gunicorn note_app.wsgi --access-logfile
+web: gunicorn note_app.wsgi --log-file -
