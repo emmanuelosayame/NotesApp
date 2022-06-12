@@ -6,7 +6,8 @@
 .pnp.js
 
 db.json
-
+/build
+build/
 # testing
 /coverage
 

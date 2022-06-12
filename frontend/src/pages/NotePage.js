@@ -17,13 +17,13 @@ function NotePage() {
    
   const getNote = async () => {
     if(noteId === 'new') return;
-    let response = await fetch(`http://127.0.0.1:8000/api/notes/${noteId}/`);
+    let response = await fetch(`https://emmanuelosayame.herokuapp.com/${noteId}/`);
     let data = await response.json();
     setNote(data.body)
   }
 
   const updateNote = async () => {
-     await fetch(`http://127.0.0.1:8000/api/notes/${noteId}/`, {method: 'PUT', 
+     await fetch(`https://emmanuelosayame.herokuapp.com/${noteId}/`, {method: 'PUT', 
      headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({ 'body':note }) }
      )
      history('/')
@@ -32,7 +32,7 @@ function NotePage() {
   const createNote = async () => {
     console.log('create')
     if(note!==null){
-    await fetch(`http://127.0.0.1:8000/api/notes/`, {method: 'POST', 
+    await fetch(`https://emmanuelosayame.herokuapp.com/api/notes/`, {method: 'POST', 
     headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({ 'body':note}) }
     )
     history('/')
@@ -40,7 +40,7 @@ function NotePage() {
  }
   
   const deleteNote = async () => {
-    await fetch(`http://127.0.0.1:8000/api/notes/${noteId}/`, {method: 'DELETE', 
+    await fetch(`https://emmanuelosayame.herokuapp.com/${noteId}/`, {method: 'DELETE', 
     headers: { 'Content-Type': 'application/json'}}
     )
     history('/')
