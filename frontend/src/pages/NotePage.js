@@ -17,13 +17,13 @@ function NotePage() {
    
   const getNote = async () => {
     if(noteId === 'new') return;
-    let response = await fetch(`https://emmanuelosayame.herokuapp.com/${noteId}/`);
+    let response = await fetch(`https://emmanuelosayame.herokuapp.com/api/notes/${noteId}/`);
     let data = await response.json();
     setNote(data.body)
   }
 
   const updateNote = async () => {
-     await fetch(`https://emmanuelosayame.herokuapp.com/${noteId}/`, {method: 'PUT', 
+     await fetch(`https://emmanuelosayame.herokuapp.com/api/notes/${noteId}/`, {method: 'PUT', 
      headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({ 'body':note }) }
      )
      history('/')
@@ -32,7 +32,7 @@ function NotePage() {
   const createNote = async () => {
     console.log('create')
     if(note!==null){
-    await fetch(`https://emmanuelosayame.herokuapp.com/api/notes/`, {method: 'POST', 
+    await fetch(`https://emmanuelosayame.herokuapp.com/api/api/notes/`, {method: 'POST', 
     headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({ 'body':note}) }
     )
     history('/')
@@ -40,7 +40,7 @@ function NotePage() {
  }
   
   const deleteNote = async () => {
-    await fetch(`https://emmanuelosayame.herokuapp.com/${noteId}/`, {method: 'DELETE', 
+    await fetch(`https://emmanuelosayame.herokuapp.com/api/notes/${noteId}/`, {method: 'DELETE', 
     headers: { 'Content-Type': 'application/json'}}
     )
     history('/')
