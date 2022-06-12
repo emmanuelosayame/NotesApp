@@ -32,7 +32,7 @@ function NotePage() {
   const createNote = async () => {
     console.log('create')
     if(note!==null){
-    await fetch(`https://emmanuelosayame.herokuapp.com/api/api/notes/`, {method: 'POST', 
+    await fetch(`https://emmanuelosayame.herokuapp.com/api/notes/`, {method: 'POST', 
     headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({ 'body':note}) }
     )
     history('/')
