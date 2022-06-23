@@ -62,7 +62,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-          BASE_DIR /'frontend/build'
+          BASE_DIR /'frontend/dist'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -137,7 +137,7 @@ except ImportError:
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'frontend/build/static'
+    BASE_DIR / 'frontend/dist/assets'
 ]
 
 # Default primary key field type
