@@ -1,3 +1,0 @@
-My first react project 
-
-Notes app => create-react-app ...
